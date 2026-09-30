@@ -22,11 +22,6 @@ export const guest = (() => {
     let information = null;
 
     /**
-     * @type {ReturnType<typeof storage>|null}
-     */
-    let config = null;
-
-    /**
      * @returns {void}
      */
     const countDownDate = () => {
@@ -73,27 +68,26 @@ export const guest = (() => {
             const nowUTC = Date.now();
             const distance = targetTimeUTC - nowUTC;
 
-            // If event has passed, show zeros
+            // If event has passed, show zeros and stop the timer
             if (distance <= 0) {
                 day.textContent = '00';
                 hour.textContent = '00';
                 minute.textContent = '00';
                 second.textContent = '00';
-                // Optionally, you could show a message here instead
-                // return; // Uncomment to stop updating after event passes
-            } else {
-                // Event is in the future, show countdown
-                // Calculate time remaining (works the same for all timezones)
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                
-                day.textContent = pad(days);
-                hour.textContent = pad(hours);
-                minute.textContent = pad(minutes);
-                second.textContent = pad(seconds);
+                return;
             }
+
+            // Event is in the future, show countdown
+            // Calculate time remaining (works the same for all timezones)
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            day.textContent = pad(days);
+            hour.textContent = pad(hours);
+            minute.textContent = pad(minutes);
+            second.textContent = pad(seconds);
 
             // Update every second, synchronized to the second boundary
             util.timeOut(updateCountdown, 1000 - (Date.now() % 1000));
@@ -178,11 +172,20 @@ export const guest = (() => {
     };
 
     /**
+     * @type {boolean}
+     */
+    let desktopSlideshowStarted = false;
+
+    /**
      * Simple slideshow - clean implementation
      * Each image stays for 3 seconds with smooth fade transition
      * @returns {Promise<void>}
      */
     const slide = async () => {
+        if (desktopSlideshowStarted) {
+            return;
+        }
+
         const slides = document.querySelectorAll('.desktop-slide-img');
         const transitionDuration = 2500; // 2.5 seconds for transition
         const displayDuration = 3000; // 3 seconds to display each image
@@ -200,6 +203,8 @@ export const guest = (() => {
         if (window.getComputedStyle(desktopEl).display === 'none') {
             return;
         }
+
+        desktopSlideshowStarted = true;
 
         // Wait for all images to load before starting slideshow
         const waitForImages = () => {
@@ -458,19 +463,25 @@ export const guest = (() => {
      */
     const buildGoogleCalendar = () => {
         /**
-         * @param {string} d 
+         * Format a JST wall-clock time for Google Calendar.
+         * The guest config has no timezone, so do not parse this as UTC.
+         * @param {string} d
          * @returns {string}
          */
-        const formatDate = (d) => (new Date(d.replace(' ', 'T') + ':00Z')).toISOString().replace(/[-:]/g, '').split('.').shift();
+        const formatDate = (d) => {
+            const [date, time] = d.split(' ');
+            const [hour, minute] = time.split(':');
+            return `${date.replace(/-/g, '')}T${hour}${minute}00`;
+        };
 
         const url = new URL('https://calendar.google.com/calendar/render');
         const data = new URLSearchParams({
             action: 'TEMPLATE',
             text: 'The Wedding of Sakib and Shabrina',
             dates: `${formatDate('2026-01-17 11:00')}/${formatDate('2026-01-17 12:30')}`,
-            details: 'Tanpa mengurangi rasa hormat, kami mengundang Anda untuk berkenan menghadiri acara pernikahan kami. Terima kasih atas perhatian dan doa restu Anda, yang menjadi kebahagiaan serta kehormatan besar bagi kami.',
+            details: 'With great respect, we invite you to attend our wedding ceremony.',
             location: 'Tokyo Camii & Diyanet Turkish Culture Center, 1-19 Ōyamachō, Shibuya, Tokyo 151-0065',
-            ctz: config.get('tz'),
+            ctz: 'Asia/Tokyo',
         });
 
         url.search = data.toString();
@@ -550,7 +561,6 @@ export const guest = (() => {
         comment.init();
         progress.init();
 
-        config = storage('config');
         information = storage('information');
 
         const vid = video.init();
