@@ -96,7 +96,7 @@ export const comment = (() => {
         const isCollapsed = anchor.getAttribute('data-show') === 'false';
 
         util.safeInnerHTML(content, util.convertMarkdownToHTML(util.escapeHtml(isCollapsed ? original : original.slice(0, card.maxCommentLength) + '...')));
-        anchor.innerText = isCollapsed ? 'Sebagian' : 'Selengkapnya';
+        anchor.innerText = isCollapsed ? 'Show less' : 'Read more';
         anchor.setAttribute('data-show', isCollapsed ? 'true' : 'false');
     };
 
@@ -436,11 +436,11 @@ export const comment = (() => {
             return;
         }
 
-        badge.classList.toggle('fa-circle-xmark', !isPresent);
-        badge.classList.toggle('text-danger', !isPresent);
-
-        badge.classList.toggle('fa-circle-check', isPresent);
+        badge.setAttribute('data-is-presence', isPresent ? 'true' : 'false');
+        badge.textContent = isPresent ? 'Attending' : 'Cannot attend';
         badge.classList.toggle('text-success', isPresent);
+        badge.classList.toggle('border-success-subtle', isPresent);
+        badge.classList.toggle('text-secondary', !isPresent);
     };
 
     /**

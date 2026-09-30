@@ -68,12 +68,9 @@ export const guest = (() => {
             const nowUTC = Date.now();
             const distance = targetTimeUTC - nowUTC;
 
-            // If event has passed, show zeros and stop the timer
             if (distance <= 0) {
-                day.textContent = '00';
-                hour.textContent = '00';
-                minute.textContent = '00';
-                second.textContent = '00';
+                document.getElementById('countdown')?.classList.add('d-none');
+                document.getElementById('countdown-complete')?.classList.remove('d-none');
                 return;
             }
 

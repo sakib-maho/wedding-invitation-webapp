@@ -69,7 +69,7 @@
 
     <!-- Dependencies JS -->
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha256-5P1JGBOIxI7FBAvT/mb1fCnI5n/NhQKzNUuW7Hq0fMc=" crossorigin="anonymous"></script>
-    <script src="./dist/guest.js?v=20260930"></script>
+    <script src="./dist/guest.js?v=20260930-2"></script>
 </head>
 
 <!-- Jika tidak menggunakan komentar, hapus atribut data-key dan data-url, serta abaikan file dashboard.html. -->
@@ -348,7 +348,9 @@
                     <div class="container text-center">
                         <h2 class="font-esthetic py-4 m-0 section-header gradient-text text-golden" style="font-size: 2.25rem;">Magic Carpet Awaits…</h2>
 
-                        <div class="countdown-modern mt-2 mb-4">
+                        <p id="countdown-complete" class="d-none py-3 m-0" style="font-size: 1.05rem;">The ceremony has taken place.</p>
+
+                        <div class="countdown-modern mt-2 mb-4" id="countdown">
                             <div class="row justify-content-center">
                                 <div class="col-3 p-1">
                                     <div class="countdown-item">
@@ -567,101 +569,6 @@
                                             </div>
                                         </div>
                                         
-                                        <!-- Budget Hotel 3 -->
-                                        <div class="col-12">
-                                            <div class="card-modern p-3">
-                                                <h5 class="mb-2" style="font-size: 0.95rem;">
-                                                    <i class="fa-solid fa-hotel me-2 text-golden"></i>
-                                                    <a href="https://www.google.com/maps/search/?api=1&query=Shibuya+Sky+Hotel+2-1-1+Shibuya+Tokyo" target="_blank" class="text-decoration-none text-theme-auto" style="font-weight: 600;">Shibuya Sky Hotel</a>
-                                                </h5>
-                                                <p class="mb-1 small" style="font-size: 0.85rem;"><i class="fa-solid fa-location-dot me-1"></i>2-1-1 Shibuya, Shibuya, Tokyo</p>
-                                                <p class="mb-0 small" style="font-size: 0.85rem;"><i class="fa-solid fa-ruler-horizontal me-1"></i>~1.9 km from venue</p>
-                                            </div>
-                                        </div>
-                                        
-                                        <!-- Budget Hotel 4 -->
-                                        <div class="col-12">
-                                            <div class="card-modern p-3">
-                                                <h5 class="mb-2" style="font-size: 0.95rem;">
-                                                    <i class="fa-solid fa-hotel me-2 text-golden"></i>
-                                                    <a href="https://www.google.com/maps/search/?api=1&query=Shibuya+Central+Hotel+1-1-1+Maruyamacho+Shibuya+Tokyo" target="_blank" class="text-decoration-none text-theme-auto" style="font-weight: 600;">Shibuya Central Hotel</a>
-                                                </h5>
-                                                <p class="mb-1 small" style="font-size: 0.85rem;"><i class="fa-solid fa-location-dot me-1"></i>1-1-1 Maruyamacho, Shibuya, Tokyo</p>
-                                                <p class="mb-0 small" style="font-size: 0.85rem;"><i class="fa-solid fa-ruler-horizontal me-1"></i>~2.1 km from venue</p>
-                                            </div>
-                                        </div>
-                                        
-                                        <!-- Budget Hotel 5 -->
-                                        <div class="col-12">
-                                            <div class="card-modern p-3">
-                                                <h5 class="mb-2" style="font-size: 0.95rem;">
-                                                    <i class="fa-solid fa-hotel me-2 text-golden"></i>
-                                                    <a href="https://www.google.com/maps/search/?api=1&query=Shibuya+City+Hotel+1-2-14+Shibuya+Tokyo" target="_blank" class="text-decoration-none text-theme-auto" style="font-weight: 600;">Shibuya City Hotel</a>
-                                                </h5>
-                                                <p class="mb-1 small" style="font-size: 0.85rem;"><i class="fa-solid fa-location-dot me-1"></i>1-2-14 Shibuya, Shibuya, Tokyo</p>
-                                                <p class="mb-0 small" style="font-size: 0.85rem;"><i class="fa-solid fa-ruler-horizontal me-1"></i>~2.3 km from venue</p>
-                                            </div>
-                                        </div>
-                                        
-                                        <!-- Budget Hotel 6 -->
-                                        <div class="col-12">
-                                            <div class="card-modern p-3">
-                                                <h5 class="mb-2" style="font-size: 0.95rem;">
-                                                    <i class="fa-solid fa-hotel me-2 text-golden"></i>
-                                                    <a href="https://www.google.com/maps/search/?api=1&query=Shibuya+Guesthouse+3-5-12+Shibuya+Tokyo" target="_blank" class="text-decoration-none text-theme-auto" style="font-weight: 600;">Shibuya Guesthouse</a>
-                                                </h5>
-                                                <p class="mb-1 small" style="font-size: 0.85rem;"><i class="fa-solid fa-location-dot me-1"></i>3-5-12 Shibuya, Shibuya, Tokyo</p>
-                                                <p class="mb-0 small" style="font-size: 0.85rem;"><i class="fa-solid fa-ruler-horizontal me-1"></i>~2.5 km from venue</p>
-                                            </div>
-                                        </div>
-                                        
-                                        <!-- Budget Hotel 7 -->
-                                        <div class="col-12">
-                                            <div class="card-modern p-3">
-                                                <h5 class="mb-2" style="font-size: 0.95rem;">
-                                                    <i class="fa-solid fa-hotel me-2 text-golden"></i>
-                                                    <a href="https://www.google.com/maps/search/?api=1&query=Shibuya+Business+Hotel+2-3-1+Shibuya+Tokyo" target="_blank" class="text-decoration-none text-theme-auto" style="font-weight: 600;">Shibuya Business Hotel</a>
-                                                </h5>
-                                                <p class="mb-1 small" style="font-size: 0.85rem;"><i class="fa-solid fa-location-dot me-1"></i>2-3-1 Shibuya, Shibuya, Tokyo</p>
-                                                <p class="mb-0 small" style="font-size: 0.85rem;"><i class="fa-solid fa-ruler-horizontal me-1"></i>~2.4 km from venue</p>
-                                            </div>
-                                        </div>
-                                        
-                                        <!-- Budget Hotel 8 -->
-                                        <div class="col-12">
-                                            <div class="card-modern p-3">
-                                                <h5 class="mb-2" style="font-size: 0.95rem;">
-                                                    <i class="fa-solid fa-hotel me-2 text-golden"></i>
-                                                    <a href="https://www.google.com/maps/search/?api=1&query=Shibuya+Economy+Hotel+1-8-1+Shibuya+Tokyo" target="_blank" class="text-decoration-none text-theme-auto" style="font-weight: 600;">Shibuya Economy Hotel</a>
-                                                </h5>
-                                                <p class="mb-1 small" style="font-size: 0.85rem;"><i class="fa-solid fa-location-dot me-1"></i>1-8-1 Shibuya, Shibuya, Tokyo</p>
-                                                <p class="mb-0 small" style="font-size: 0.85rem;"><i class="fa-solid fa-ruler-horizontal me-1"></i>~2.6 km from venue</p>
-                                            </div>
-                                        </div>
-                                        
-                                        <!-- Budget Hotel 9 -->
-                                        <div class="col-12">
-                                            <div class="card-modern p-3">
-                                                <h5 class="mb-2" style="font-size: 0.95rem;">
-                                                    <i class="fa-solid fa-hotel me-2 text-golden"></i>
-                                                    <a href="https://www.google.com/maps/search/?api=1&query=Shibuya+Budget+Inn+3-2-5+Shibuya+Tokyo" target="_blank" class="text-decoration-none text-theme-auto" style="font-weight: 600;">Shibuya Budget Inn</a>
-                                                </h5>
-                                                <p class="mb-1 small" style="font-size: 0.85rem;"><i class="fa-solid fa-location-dot me-1"></i>3-2-5 Shibuya, Shibuya, Tokyo</p>
-                                                <p class="mb-0 small" style="font-size: 0.85rem;"><i class="fa-solid fa-ruler-horizontal me-1"></i>~2.7 km from venue</p>
-                                            </div>
-                                        </div>
-                                        
-                                        <!-- Budget Hotel 10 -->
-                                        <div class="col-12">
-                                            <div class="card-modern p-3">
-                                                <h5 class="mb-2" style="font-size: 0.95rem;">
-                                                    <i class="fa-solid fa-hotel me-2 text-golden"></i>
-                                                    <a href="https://www.google.com/maps/search/?api=1&query=Shibuya+Value+Hotel+1-5-8+Shibuya+Tokyo" target="_blank" class="text-decoration-none text-theme-auto" style="font-weight: 600;">Shibuya Value Hotel</a>
-                                                </h5>
-                                                <p class="mb-1 small" style="font-size: 0.85rem;"><i class="fa-solid fa-location-dot me-1"></i>1-5-8 Shibuya, Shibuya, Tokyo</p>
-                                                <p class="mb-0 small" style="font-size: 0.85rem;"><i class="fa-solid fa-ruler-horizontal me-1"></i>~2.8 km from venue</p>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -912,8 +819,8 @@
                                 <label for="form-presence" class="form-label my-1"><i class="fa-solid fa-person-circle-question me-2" aria-hidden="true"></i>Attendance</label>
                                 <select class="form-select shadow-sm rounded-4" id="form-presence" autocomplete="off" aria-required="true" aria-describedby="form-presence-help" data-offline-disabled="false">
                                     <option value="0" selected>Confirm Attendance</option>
-                                    <option value="1">&#9989; Attending</option>
-                                    <option value="2">&#10060; Cannot Attend</option>
+                                    <option value="1">Attending</option>
+                                    <option value="2">Cannot attend</option>
                                 </select>
                                 <small id="form-presence-help" class="form-text text-muted d-none">Select your attendance status</small>
                             </div>
