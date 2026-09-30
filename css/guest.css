@@ -179,7 +179,7 @@ html[data-bs-theme="light"] .btn-transparent {
 /* Welcome Page Desktop Background Image */
 @media (min-width: 768px) {
     #welcome {
-        background-image: url('../assets/images/desktop_back.png?v=2');
+        background-image: url('../assets/images/desktop_back.webp?v=3');
         background-size: cover;
         background-position: center 10%;
         background-repeat: no-repeat;
